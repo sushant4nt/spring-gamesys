@@ -6,13 +6,13 @@ import org.junit.jupiter.api.Test;
 import static org.example.springapp.MovieGenre.COMEDY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MovieDaoTest {
+public class InMemoryMovieDaoTest {
 
-    private MovieDao dao;
+    private InMemoryMovieDao dao;
 
     @BeforeEach
     public void setUp() {
-        dao = new MovieDao();
+        dao = new InMemoryMovieDao();
     }
 
     @Test

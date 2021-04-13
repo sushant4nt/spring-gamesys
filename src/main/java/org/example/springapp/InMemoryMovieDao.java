@@ -7,11 +7,11 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
 @Component
-public class MovieDao {
+public class InMemoryMovieDao {
 
     private List<Movie> movies;
 
-    public MovieDao() {
+    public InMemoryMovieDao() {
         movies = new CopyOnWriteArrayList<>();
     }
 
