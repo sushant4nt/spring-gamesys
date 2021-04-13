@@ -7,7 +7,12 @@ import org.springframework.context.annotation.Configuration;
 public class AppContextConfig {
 
     @Bean
-    public MovieDao movieDao() {
-        return new MovieDao();
+    public MovieDao inMemoryMovieDao() {
+        return new InMemoryMovieDao();
+    }
+
+    @Bean
+    public MovieDao jdbcMovieDao() {
+        return new JdbcMovieDao();
     }
 }

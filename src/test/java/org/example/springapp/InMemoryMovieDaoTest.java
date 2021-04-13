@@ -10,7 +10,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import static org.example.springapp.MovieGenre.COMEDY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class MovieDaoTest {
+public class InMemoryMovieDaoTest {
 
     private ApplicationContext context;
     private MovieDao dao;
@@ -18,7 +18,7 @@ public class MovieDaoTest {
     @BeforeEach
     public void setUp() {
         context = new AnnotationConfigApplicationContext(AppContextConfig.class);
-        dao = context.getBean(MovieDao.class);
+        dao = (InMemoryMovieDao) context.getBean("inMemoryMovieDao");
     }
 
     @AfterEach

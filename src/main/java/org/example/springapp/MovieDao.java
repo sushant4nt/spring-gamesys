@@ -1,54 +1,22 @@
 package org.example.springapp;
 
 import java.util.List;
-import java.util.concurrent.CopyOnWriteArrayList;
-import java.util.stream.Collectors;
 
-public class MovieDao {
+public interface MovieDao {
 
-    private List<Movie> movies;
+    long add(Movie movie);
 
-    public MovieDao() {
-        movies = new CopyOnWriteArrayList<>();
-    }
+    List<Movie> findByTitleLike(String partialTitle);
 
-    public long add(Movie newMovie) {
-        movies.add(newMovie);
-        return newMovie.getId();
-    }
+    List<Movie> findByGenre(MovieGenre genre);
 
-    public List<Movie> findByTitleLike(String partialTitle) {
-        return movies
-                .stream()
-                .filter(m -> m.getTitle().toLowerCase().contains(partialTitle.toLowerCase()))
-                .collect(Collectors.toList());
-    }
+    List<Movie> findByReleaseYear(int releaseYear);
 
-    public List<Movie> findByGenre(MovieGenre genre) {
-        return movies.stream().filter(m -> m.getGenre() == genre).collect(Collectors.toList());
-    }
+    Movie findById(long id) throws NoSuchMovieException;
 
-    public List<Movie> findByReleaseYear(int releaseYear) {
-        return movies.stream().filter(m -> m.getReleaseYear() == releaseYear).collect(Collectors.toList());
-    }
+    void update(Movie movie) throws NoSuchMovieException;
 
-    public Movie findById(long id) throws NoSuchMovieException {
-        return movies.stream().filter(m -> m.getId() == id).findFirst().orElseThrow(NoSuchMovieException::new);
-    }
+    void delete(Movie movie) throws NoSuchMovieException;
 
-    public void update(Movie updatedMovie) throws NoSuchMovieException {
-        Movie movie = findById(updatedMovie.getId());
-        movie.setTitle(updatedMovie.getTitle());
-        movie.setGenre(updatedMovie.getGenre());
-        movie.setReleaseYear(updatedMovie.getReleaseYear());
-    }
-
-    public void delete(Movie movieToDelete) throws NoSuchMovieException {
-        Movie movie = findById(movieToDelete.getId());
-        movies.remove(movie);
-    }
-
-    public int size() {
-        return movies.size();
-    }
+    int size();
 }
