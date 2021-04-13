@@ -1,13 +1,16 @@
 package org.example.springapp;
 
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
+@Qualifier("mem")
 @Component
-public class InMemoryMovieDao {
+public class InMemoryMovieDao implements MovieDao {
 
     private List<Movie> movies;
 

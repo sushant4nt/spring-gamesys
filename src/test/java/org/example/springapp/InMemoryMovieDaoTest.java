@@ -2,17 +2,21 @@ package org.example.springapp;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import static org.example.springapp.MovieGenre.COMEDY;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class InMemoryMovieDaoTest {
 
-    private InMemoryMovieDao dao;
+    private ApplicationContext context;
+    private MovieDao dao;
 
     @BeforeEach
     public void setUp() {
-        dao = new InMemoryMovieDao();
+        context = new AnnotationConfigApplicationContext(AppContextConfig.class);
+        dao = context.getBean("inMemoryMovieDao", MovieDao.class);
     }
 
     @Test

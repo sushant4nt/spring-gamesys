@@ -1,5 +1,6 @@
 package org.example.springapp;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -8,9 +9,9 @@ import java.util.List;
 public class MovieService {
 
 //    @Autowired
-    private InMemoryMovieDao dao;
+    private MovieDao dao;
 
-    public MovieService(InMemoryMovieDao dao) {
+    public MovieService(@Qualifier("mem") MovieDao dao) {
         this.dao = dao;
     }
 
