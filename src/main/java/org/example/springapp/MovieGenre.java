@@ -1,4 +1,4 @@
-package org.example.springbootapp;
+package org.example.springapp;
 
 public enum MovieGenre {
 
