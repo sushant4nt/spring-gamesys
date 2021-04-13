@@ -1,9 +1,12 @@
 package org.example.springapp;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.stream.Collectors;
 
+@Component
 public class MovieDao {
 
     private List<Movie> movies;
