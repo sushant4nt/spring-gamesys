@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Songs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1 class="display-4 mt-4 mb-4">My Favourite Songs</h1>
+        <nav class="navbar navbar-expand-sm bg-light mb-4">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a th:href="@{/}" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/songs}" class="nav-link">The songs</a>
+                </li>
+                <li class="nav-item">
+                    <a th:href="@{/newsong}" class="nav-link">Add new song</a>
+                </li>
+            </ul>
+        </nav>
+        <form method="post" th:action="@{/newsong}" th:object="${song}">
+            <div class="form-group">
+                <label>Title</label>
+                <input type="text" th:field="*{title}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Artist</label>
+                <input type="text" th:field="*{artist}" class="form-control">
+            </div>
+            <div class="form-group">
+                <label>Genre</label>
+                <input type="text" th:field="*{genre}" class="form-control">
+            </div>
+            <button class="btn btn-dark">Submit</button>&nbsp;
+            <button type="reset" class="btn btn-dark">Reset</button>
+        </form>
+        <p th:if="${success}" th:text="${success}" class="alert alert-success"></p>
+        <p th:if="${failure}" th:text="${failure}" class="alert alert-danger"></p>
+    </div>
+</body>
+</html>
