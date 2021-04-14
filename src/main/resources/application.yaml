@@ -1,0 +1,16 @@
+me:
+  name: Stuart
+  age: 43
+  children:
+    -
+      name: James
+      age: 4
+    -
+      name: Juliet
+      age: 0
+
+debug: true
+
+# application.properties
+# me.name=Stuart
+# me.age=43
