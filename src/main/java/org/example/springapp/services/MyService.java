@@ -1,5 +1,8 @@
 package org.example.springapp.services;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class MyService implements Service {
 
     @Override
