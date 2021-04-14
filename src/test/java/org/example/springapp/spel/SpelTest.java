@@ -7,6 +7,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.expression.BeanFactoryResolver;
 import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.Expression;
+import org.springframework.expression.common.TemplateParserContext;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
 
@@ -87,5 +88,18 @@ public class SpelTest {
         evalContext.setBeanResolver(new BeanFactoryResolver(context));
         User user = parse("@user", User.class, evalContext);
         assertNotNull(user);
+    }
+
+    @Test
+    public void testTernaryOperator() {
+        evalContext.setBeanResolver(new BeanFactoryResolver(context));
+        String result = parse("@user.name eq 'trainer' ? 'Trainer' : 'Delegate'", String.class, evalContext);
+        assertEquals("Trainer", result);
+    }
+
+    @Test
+    public void testTemplating() {
+        Expression expression = parser.parseExpression("1 + 1 = #{1 + 1}", new TemplateParserContext());
+        assertEquals("1 + 1 = 2", expression.getValue());
     }
 }
