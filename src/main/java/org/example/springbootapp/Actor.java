@@ -1,17 +1,30 @@
 package org.example.springbootapp;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "actors")
 public class Actor {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String name;
     private LocalDate dob;
+
+    @Column(name = "birth_country")
     private String countryOfBirth;
+
     private boolean active;
+
+    @ManyToMany(mappedBy = "actors")
     private Set<Movie> movies;
+
+    // TODO: add hashCode and equals
 
     public Actor(String name, LocalDate dob, String countryOfBirth, boolean active) {
         this.name = name;

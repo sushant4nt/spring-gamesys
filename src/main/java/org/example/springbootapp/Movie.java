@@ -1,15 +1,34 @@
 package org.example.springbootapp;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
+@Entity
+@Table(name = "movies")
 public class Movie {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+
     private String title;
+
+    @Enumerated(EnumType.STRING)
     private MovieGenre genre;
+
+    @Column(name = "release_year")
     private int releaseYear;
+
+    @ManyToMany
+    @JoinTable(
+            name = "movies_actors",
+            joinColumns = { @JoinColumn(name = "movie_id") },
+            inverseJoinColumns = { @JoinColumn(name = "actor_id") }
+    )
     private Set<Actor> actors;
+
+    // TODO: add hashCode and equals
 
     public Movie(String title, MovieGenre genre, int releaseYear) {
         this.title = title;
