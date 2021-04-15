@@ -1,4 +1,4 @@
-package org.example.springbootapp;
+package org.example.bootopenapiclient;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
