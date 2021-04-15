@@ -1,0 +1,8 @@
+springdoc:
+  # the default URL is /v3/api-docs
+  # YAML at /docs.yaml
+  api-docs:
+    path: /docs
+  # the default URL is /swagger-ui.html
+  swagger-ui:
+    path: /swagger
