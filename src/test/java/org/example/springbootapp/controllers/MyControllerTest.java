@@ -1,7 +1,7 @@
-package org.example.springbootapp;
+package org.example.springbootapp.controllers;
 
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class AppTest {
+public class MyControllerTest {
 }
