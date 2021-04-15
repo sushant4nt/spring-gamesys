@@ -18,16 +18,6 @@ public class SongController {
     @Autowired
     private SongRepo repo;
 
-    @ExceptionHandler(InvalidSongException.class)
-    private ResponseEntity<Void> handleInvalidSongs(InvalidSongException e) {
-        String errors = e.getErrors()
-                .getAllErrors()
-                .stream()
-                .map(ObjectError::getDefaultMessage)
-                .collect(Collectors.joining(","));
-        return ResponseEntity.badRequest().header("errors", errors).build();
-    }
-
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Song addNewSong(@RequestBody @Validated Song song, Errors errors) throws InvalidSongException {
@@ -41,4 +31,13 @@ public class SongController {
     public List<Song> getAllSongs() {
         return repo.findAll();
     }
+
+    /*
+     * TODO: implement additional endpoints
+     * GET /songs/{id}
+     * PUT /songs/{id}
+     * DELETE /songs/{id}
+     *
+     * Have a thing about how you implement searching/filtering?
+     */
 }
