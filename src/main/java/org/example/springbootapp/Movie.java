@@ -20,7 +20,7 @@ public class Movie {
     @Column(name = "release_year")
     private int releaseYear;
 
-    @ManyToMany
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
     @JoinTable(
             name = "movies_actors",
             joinColumns = { @JoinColumn(name = "movie_id") },
