@@ -5,12 +5,14 @@
             http://www.ehcache.org/v3
             http://www.ehcache.org/schema/ehcache-core-3.0.xsd
             http://www.ehcache.org/v3/jsr107
-            http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd
-            http://www.ehcache.org/v3">
+            http://www.ehcache.org/schema/ehcache-107-ext-3.0.xsd">
 
-    <cache alias="">
-        <key-type></key-type>
-        <value-type></value-type>
+    <cache alias="legoSets">
+        <key-type>java.lang.Integer</key-type>
+        <value-type>org.example.springbootapp.LegoSet</value-type>
+        <expiry>
+            <ttl unit="minutes">10</ttl>
+        </expiry>
 
         <resources>
             <heap unit="entries">2</heap>
