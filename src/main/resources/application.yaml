@@ -1,0 +1,24 @@
+spring:
+  jmx:
+    enabled: true
+
+management:
+  endpoint:
+    health:
+      show-details: ALWAYS
+      show-components: ALWAYS
+  endpoints:
+    web:
+      exposure:
+        include:
+          - beans
+          - health
+          - info
+          - mappings
+          - metrics
+          - myname
+  metrics:
+    export:
+      appoptics:
+        api-token: <TBC>
+        step: 30s
