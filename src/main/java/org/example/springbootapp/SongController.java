@@ -32,9 +32,13 @@ public class SongController {
         return repo.findAll();
     }
 
+    @GetMapping("/{id}")
+    public Song getSongById(@PathVariable long id) throws NoSuchSongException {
+        return repo.findById(id).orElseThrow(NoSuchSongException::new);
+    }
+
     /*
      * TODO: implement additional endpoints
-     * GET /songs/{id}
      * PUT /songs/{id}
      * DELETE /songs/{id}
      *
