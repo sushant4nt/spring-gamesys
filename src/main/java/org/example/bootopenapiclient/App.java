@@ -1,5 +1,6 @@
 package org.example.bootopenapiclient;
 
+import org.example.bootopenapibroker.apis.SongControllerApi;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -12,8 +13,13 @@ public class App {
         SpringApplication.run(App.class, args);
     }
 
+//    @Bean
+//    public RestTemplate restTemplate() {
+//        return new RestTemplate();
+//    }
+
     @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
+    public SongControllerApi api() {
+        return new SongControllerApi();
     }
 }

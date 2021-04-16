@@ -1,5 +1,7 @@
 package org.example.bootopenapiclient;
 
+import org.example.bootopenapibroker.apis.SongControllerApi;
+import org.example.bootopenapibroker.models.Song;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.ParameterizedTypeReference;
@@ -14,22 +16,28 @@ import java.util.List;
 @Service
 public class SongService {
 
-    @Autowired
-    private RestTemplate restTemplate;
+//    @Autowired
+//    private RestTemplate restTemplate;
 
-    @Value("${bootopenapi.url}")
-    private String bootOpenApiUrl;
+//    @Value("${bootopenapi.url}")
+//    private String bootOpenApiUrl;
+
+    @Autowired
+    private SongControllerApi api;
 
     public List<Song> getAllSongs() {
-        ResponseEntity<List<Song>> responseEntity = restTemplate.exchange(
-                        bootOpenApiUrl,
-                        HttpMethod.GET,
-                        null,
-                        new ParameterizedTypeReference<List<Song>>() {});
-        if (responseEntity.getStatusCode() == HttpStatus.OK) {
-            return responseEntity.getBody();
-        } else {
-            return null;
-        }
+
+//        ResponseEntity<List<Song>> responseEntity = restTemplate.exchange(
+//                        bootOpenApiUrl,
+//                        HttpMethod.GET,
+//                        null,
+//                        new ParameterizedTypeReference<List<Song>>() {});
+//        if (responseEntity.getStatusCode() == HttpStatus.OK) {
+//            return responseEntity.getBody();
+//        } else {
+//            return null;
+//        }
+
+        return api.getAll();
     }
 }
